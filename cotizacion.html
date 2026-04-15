@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Cotización - Uniformes Industriales</title>
+    <link rel="stylesheet" href="styles.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+       
+        .cotizacion-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cotizacion-container h2 {
+            text-align: center;
+            color: #00ff15;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="number"],
+        .form-group select,
+        .form-group textarea {
+            width: calc(100% - 22px); /* Ancho completo con padding */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            resize: vertical; /* Permite redimensionar verticalmente */
+            min-height: 100px;
+        }
+
+        .form-group select {
+            appearance: none; /* Elimina estilos por defecto del select */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.1L146.2%20202.7%2018.8%2074.5a17.6%2017.6%200%200%200-25.3%2023.2l130.8%20130.8c6.7%206.7%2017.7%206.7%2024.4%200l130.8-130.8c6.7-6.7%206.7-17.7%200-24.4a17.6%2017.6%200%200%200-11.9-5.2z%22%2F%3E%3C%2Fsvg%3E'); /* Flecha personalizada */
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 12px;
+            padding-right: 30px; /* Para que la flecha no se superponga al texto */
+        }
+
+        .form-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .form-group .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745; /* Botón verde para enviar */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .form-message {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            display: none; /* Oculto por defecto */
+        }
+        .form-message.success {
+            color: #28a745;
+        }
+        .form-message.error {
+            color: #dc3545;
+        }
+
+        /* Puedes añadir aquí estilos para tu header y footer si los reutilizas */
+        header, footer {
+            width: 100%;
+            /* background-color: #f8f8f8; */
+            /* ... otros estilos de tu header/footer ... */
+        }
+        
+    </style>
+</head>
+<body>
+        <header>
+        <div class="contenedor">
+            <div class="logo">
+                
+                <h1>UNIFORMES <span>INDUSTRIALES</span></h1>
+            </div>
+            <nav>
+                <a href="index.html#inicio">Inicio</a>
+                <a href="index.html#productos">Productos</a>
+                <a href="index.html#servicios">Servicios</a>
+                <a href="index.html#nosotros">Nosotros</a>
+                <a href="index.html#contacto">Contacto</a>
+            </nav>
+            <a href="login.html" class="btn-login">
+                <i class="fas fa-user"></i> Ingresar
+            </a>
+            <button class="menu-movil"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <div class="cotizacion-container">
+        <h2>Solicitud de Cotización</h2>
+        <form id="cotizacionForm" action="#" method="POST">
+            <div class="form-group">
+                <label for="tipoPrenda">Tipo de Prenda:</label>
+                <select id="tipoPrenda" name="tipoPrenda" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="camisa">Camisa</option>
+                    <option value="pantalon">Pantalón</option>
+                    <option value="chaqueta">Chaqueta / Saco</option>
+                    <option value="overol">Overol</option>
+                    <option value="chaleco">Chaleco</option>
+                    <option value="delantal">Delantal</option>
+                    <option value="gorra">Gorra</option>
+                    <option value="otro">Otro (especifique en observaciones)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="cantidad">Cantidad estimada:</label>
+                <input type="number" id="cantidad" name="cantidad" min="1" required placeholder="Ej: 50">
+            </div>
+
+            <div class="form-group">
+                <label for="tallas">Tallas Requeridas (Ej: S, M, L, XL - indicar cantidades si es posible):</label>
+                <textarea id="tallas" name="tallas" placeholder="Ej: 10 S, 20 M, 15 L, 5 XL"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Personalización:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="bordado" name="personalizacion" value="bordado">
+                    <label for="bordado">Bordado (logos, nombres)</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="estampado" name="personalizacion" value="estampado">
+                    <label for="estampado">Estampado</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="diseno_especial" name="personalizacion" value="diseno_especial">
+                    <label for="diseno_especial">Diseño especial / a medida</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="observaciones">Observaciones adicionales (colores, materiales, detalles específicos):</label>
+                <textarea id="observaciones" name="observaciones" placeholder="Ej: Camisas de color azul rey, material antifluido, logo bordado en el pecho izquierdo."></textarea>
+            </div>
+
+            <h3>Datos de Contacto</h3>
+            <div class="form-group">
+                <label for="nombreContacto">Nombre Completo:</label>
+                <input type="text" id="nombreContacto" name="nombreContacto" required placeholder="Su nombre">
+            </div>
+
+            <div class="form-group">
+                <label for="empresa">Nombre de la Empresa:</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Nombre de su empresa">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="ejemplo@dominio.com">
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej: +57 3XX XXX XXXX">
+            </div>
+
+            <button type="submit">Enviar Solicitud de Cotización</button>
+            <p id="formMessage" class="form-message"></p>
+        </form>
+    </div>
+
+    <!-- FOOTER (puedes copiar el de tu index.html si tienes uno) -->
+    <footer>
+        <div class="contenedor" style="text-align: center; padding: 20px; color: #555; font-size: 0.9em;">
+            <p>&copy; 2024 Uniformes Industriales. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('cotizacionForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevenir el envío tradicional del formulario
+            const formMessage = document.getElementById('formMessage');
+            formMessage.style.display = 'none'; // Ocultar mensaje previo
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            data.personalizacion = [];
+            document.querySelectorAll('input[name="personalizacion"]:checked').forEach(checkbox => {
+                data.personalizacion.push(checkbox.value);
+            });
+
+           
+            console.log('Datos de cotización a enviar:', data);
+
+           
+            try {
+                
+                
+                await new Promise(resolve => setTimeout(resolve, 1500)); 
+                formMessage.textContent = '¡Su solicitud de cotización ha sido enviada con éxito! Nos pondremos en contacto pronto.';
+                formMessage.className = 'form-message success';
+                formMessage.style.display = 'block';
+                this.reset(); 
+            } catch (error) {
+                console.error('Error al enviar la cotización:', error);
+                formMessage.textContent = 'Hubo un problema de conexión. Por favor, inténtelo de nuevo.';
+                formMessage.className = 'form-message error';
+                formMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
